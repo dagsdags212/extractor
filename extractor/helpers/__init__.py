@@ -29,3 +29,4 @@ def classify_url_by_journal(url: URL) -> URL:
     print("Journal not found from URL host")
     url.journal = None
     return url
+
