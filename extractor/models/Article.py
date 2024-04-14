@@ -9,6 +9,9 @@ class Author(BaseModel):
     first_name: Optional[str]   = Field(default="")
     affiliation: Optional[str]  = Field(default="")
 
+    def __str__(self) -> str:
+        return f"{self.last_name}, {self.first_name}"
+
 class PageRange(BaseModel):
     """Stores the start and end indices of an article."""
     start: int | str
@@ -32,4 +35,4 @@ class Article(BaseModel):
     abstract: str
     download_url: str
     figures: List[str]
-    references: List[Citation]
+    references: List[str]
