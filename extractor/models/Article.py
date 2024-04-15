@@ -35,5 +35,5 @@ class Article(BaseModel):
     abstract: str
     references: List[str]
     citation: Optional[Citation]    = Field(default=None)
-    download_ur: Optional[str]      = Field(default=None)
+    download_url: Optional[str]     = Field(default=None)
     figures: Optional[List[str]]    = Field(default=None)

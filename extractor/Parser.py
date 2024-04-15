@@ -23,7 +23,7 @@ class Parser:
         tree = TREES["nature"]
 
         # check if article is open access
-        identifiers = soup.select("article > header > ul.c-article-identifiers")
+        identifiers = soup.select("article header ul.c-article-identifiers li")
         open_access = len(identifiers) == 3
 
         citation_data = {
@@ -92,7 +92,7 @@ class Parser:
         if open_access:
             download_url_node = soup.select(tree.download_url)
             if download_url_node:
-                article_data["download_url"] = download_url_node[0].get("href")
+                article_data["download_url"] = "https://www.nature.com" + download_url_node[0].get("href")
             for node in soup.select(tree.references)[0]:
                 res = node.find("p")
                 if res:
@@ -100,7 +100,7 @@ class Parser:
             for node in soup.select(tree.figures):
                 img = node.find("img")
                 if img:
-                    article_data["figures"].append(img.get("src")[2:])
+                    article_data["figures"].append(f"https://{img.get("src")[2:]}")
         article = Article.model_validate(article_data)
 
         return article

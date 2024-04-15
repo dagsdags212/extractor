@@ -1,9 +1,6 @@
 from pathlib import Path
 import sys
 import tomllib
-from typing import Any
-from extractor.selectors import TREES
-from extractor.cli import cli_args
 
 PLATFORM = sys.platform
 HOME = Path.home()
