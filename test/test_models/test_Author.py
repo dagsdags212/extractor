@@ -2,6 +2,7 @@ from pydantic import ValidationError
 from pytest import raises
 from extractor.models.Article import Author
 
+
 def test_complete_fields():
     author = Author(first_name="John", last_name="Doe", affiliation="foo")
     assert author.model_fields_set == {"first_name", "last_name", "affiliation"}
