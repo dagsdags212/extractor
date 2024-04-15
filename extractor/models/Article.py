@@ -31,8 +31,9 @@ class Citation(BaseModel):
 class Article(BaseModel):
     """Stores article-related information."""
     title: str
-    citation: Citation
+    open_access: bool
     abstract: str
-    download_url: str
-    figures: List[str]
     references: List[str]
+    citation: Optional[Citation]    = Field(default=None)
+    download_ur: Optional[str]      = Field(default=None)
+    figures: Optional[List[str]]    = Field(default=None)
