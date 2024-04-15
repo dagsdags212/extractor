@@ -37,3 +37,17 @@ class Article(BaseModel):
     citation: Optional[Citation]    = Field(default=None)
     download_url: Optional[str]     = Field(default=None)
     figures: Optional[List[str]]    = Field(default=None)
+
+    def __str__(self) -> str:
+        f = ""
+        f += f"\ntitle            : {self.title}"
+        f += f"\nopen access      : {self.open_access}"
+        f += f"\nauthor count     : {len(self.citation.authors)}"
+        if self.open_access:
+            f += f"\ndownload_url     : {self.download_url}"
+            f += f"\nreference count  : {len(self.references)}"
+            f += f"\nfigure count     : {len(self.figures)}"
+        f += "\n"
+        return f
+
+
