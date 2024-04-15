@@ -1,11 +1,25 @@
-[build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "extractor"
-version = "0.0.1"
+version = "0.1.0"
+description = "CLI-based parser for extracting metadata and downloading figures of articles from supported journals"
+authors = ["dagsdags <jegsamson.dev@gmail.com>"]
+readme = "README.md"
 
-[project.scripts]
+[tool.poetry.dependencies]
+python = "^3.10"
+httpx = "^0.27.0"
+pydantic = "^2.7.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.1.1"
+
+[tool.poetry.group.dev.dependencies]
+httpx = "^0.27.0"
+pydantic = "^2.7.0"
+
+[tool.poetry.scripts]
 extractor = "extractor.__main__:main"
 
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
