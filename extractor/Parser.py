@@ -1,4 +1,3 @@
-import sys
 from bs4 import BeautifulSoup
 from extractor.models.Article import Article, Author, Citation
 from extractor.models.Journal import Journal

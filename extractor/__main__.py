@@ -17,13 +17,18 @@ def main() -> None:
 
     article = Parser.nature_article(r.text)
 
+    if args.info:
+        print(article)
+        sys.exit(0)
     if args.abstract:
         print("\n", article.abstract, "\n")
+        sys.exit(0)
     if args.references:
         print("\n")
         for i, ref in enumerate(article.references):
             print(f"[{i+1}] {ref}")
         print("\n")
+        sys.exit(0)
     if args.authors:
         print("\n")
         for i, author in enumerate(article.citation.authors):

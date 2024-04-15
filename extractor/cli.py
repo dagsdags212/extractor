@@ -10,6 +10,11 @@ def get_cli_args():
     )
     ap.add_argument("url", help="article URL")
     ap.add_argument(
+        "--info", 
+        help="display article info",
+        action="store_true"
+    )
+    ap.add_argument(
         "--abstract", 
         help="display article abstract",
         action="store_true"
