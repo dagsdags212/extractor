@@ -21,7 +21,7 @@ class SelectorTree:
 
 NATURE_SELECTORS = {
     "title": "article header h1[data-test='article-title']",
-    "publication_year": ".c-article-info-details > span:nth-child(4)",
+    "publication_year": "p.c-article-info-details > span[data-test='article-publication-year']",
     "abstract": "div.c-article-body section[data-title='Abstract'] p",
     "volume": "article header p.c-article-info-details b[data-test='journal-volume']",
     "issue": "article header p.c-article-info-details span[data-test='article-number']",
