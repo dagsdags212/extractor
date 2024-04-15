@@ -14,8 +14,10 @@ class TestArticleClass:
     volume = 596
     issue = None
     pages = PageRange(start=583, end=589)
+    open_access = True
     citation = Citation(
         title=title,
+        open_access=open_access,
         publication_year=publication_year,
         authors=authors,
         journal=journal,
@@ -27,27 +29,33 @@ class TestArticleClass:
     abstract = "This is a synthesis of the entire article content."
     download_url = "https://www.downloadurl.com/download/article"
     figures = [f"https://www.figure.com/fig/{i}" for i in range(3)]
-    references = [citation] * 3
+    references = [f"references {i}" for i in range(1,4)]
 
     def test_complete_fields(self):
         article = Article.model_validate({
             "title": self.title,
+            "open_access": self.open_access,
             "citation": self.citation,
             "abstract": self.abstract,
             "download_url": self.download_url,
             "figures": self.figures,
             "references": self.references
         })
-        assert len(article.model_fields_set) == 6
+        assert len(article.model_fields_set) == 7
 
     def test_incomplete_fields(self):
+        """
+        Expect to throw an error if Article does not have the following attributes:
+          > title
+          > open_access
+          > citation
+          > abstract
+        """
         data = {
             "title": self.title,
+            "open_access": self.open_access,
             "citation": self.citation,
             "abstract": self.abstract,
-            "download_url": self.download_url,
-            "figures": self.figures,
-            "references": self.references
         }
         for reqf in data.keys():
             inc_data = data.copy()

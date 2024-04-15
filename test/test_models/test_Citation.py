@@ -3,6 +3,7 @@ from pydantic import ValidationError
 from extractor.models.Journal import Journal
 from extractor.models.Article import Author, PageRange, Citation
 
+
 class TestCitationClass:
     title = "Highly accurate protein structure prediction with AlphaFold"
     publication_year = 2021
