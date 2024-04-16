@@ -13,6 +13,8 @@ class AbstractParser(ABC):
     """
 
     def __init__(self, html_str: str, journal: Journal) -> None:
+        assert isinstance(html_str, str), f"`html_str` must be of type str, not {type(html_str)}"
+        assert isinstance(journal, Journal), f"`journal` must be of type Journal, not {type(journal)}"     
         self._html_str = html_str
         self._journal = journal
         self._soup = self._generate_soup(html_str)
@@ -66,10 +68,12 @@ class AbstractParser(ABC):
     def generate_article(self) -> Article:
         """Invokes the extraction functions to return an Article object."""
         citation_data = self._extract_citation_fields()
+        # create Citation object
         citation = Citation.model_validate(citation_data)
         article_data = self._extract_article_fields()
         article_data.update({"citation": citation})
         article_data.update({"title": citation.title})
+        # create and return Article object
         article = Article.model_validate(article_data)
         return article
 
@@ -80,8 +84,7 @@ class NatureParser(AbstractParser):
         super().__init__(html_str, Journal.NATURE)
 
     def _extract_citation_fields(self) -> dict:
-        soup = self.soup
-        tree = self.tree
+        soup, tree = self.soup, self.tree
         # intialize citation_data dictionary
         citation_data = {
             f: None for f in ["title", "publication_year", "volume", "issue", "doi"]

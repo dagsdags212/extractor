@@ -21,5 +21,5 @@ pydantic = "^2.7.0"
 extractor = "extractor.__main__:main"
 
 [build-system]
-requires = ["poetry-core"]
+r5154684df5084559equires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
