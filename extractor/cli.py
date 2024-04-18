@@ -25,6 +25,11 @@ def get_cli_args():
         action="store_true"
     )
     ap.add_argument(
+        "--title",
+        help="display title of the article",
+        action="store_true"
+    )
+    ap.add_argument(
         "--authors", 
         help="display ALL authors of the article",
         action="store_true"

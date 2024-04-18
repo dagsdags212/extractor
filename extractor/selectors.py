@@ -32,6 +32,19 @@ NATURE_SELECTORS = {
     "figures": "div[data-test='figure'] figure",
 }
 
+PLOS_SELECTORS = {
+    "title": "div.title-authors h1#artTitle",
+    "publication_year": "div.article-title-etc ul.date-doi li#artPubDate",
+    "abstract": "div#artText div.abstract div.abstract-content p",
+    "volume": "div.article-content div.articleinfo:nth-child(1)",
+    "issue": "div.article-content div.articleinfo:nth-child(1)",
+    "download_url": "aside div.dload-menu div.dload-pdf a",
+    "doi": "div.article-title-etc ul.date-doi li#artDoi a",
+    "references": "ol.references",
+    "authors": "div.title-authors ul"
+}
+
+
 TREES = {
     Journal.NATURE: SelectorTree(NATURE_SELECTORS),
 }

@@ -46,6 +46,10 @@ def main() -> None:
             ref_table.add_row(str(i+1), ref)
         console.print(ref_table)
 
+    # display article title
+    if args.title:
+        print(f"\n{article.title}\n")
+
     # display list of authors
     if args.authors:
         authors_table = Table(
